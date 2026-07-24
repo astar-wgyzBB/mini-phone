@@ -279,31 +279,32 @@ jobs:
           
           void main() async {
             WidgetsFlutterBinding.ensureInitialized();
-            await S.init();
-            AutoMsg.init();
-            runApp(const App());
-          }
-          
-          class App extends StatelessWidget {
-            const App({super.key});
-            @override
-            Widget build(BuildContext context) {
-              return MaterialApp(
-                title:'小手机', debugShowCheckedModeBanner:false,
-                theme: ThemeData(
-                  brightness:Brightness.dark,
-                  scaffoldBackgroundColor:const Color(0xFF0A0A14),
-                  colorScheme:const ColorScheme.dark(primary:Color(0xFFFF4470),secondary:Color(0xFFFF6B8A),surface:Color(0xFF12122A),onSurface:Color(0xFFE8E8F0)),
-                  appBarTheme:const AppBarTheme(backgroundColor:Color(0xFF12122A),elevation:0,centerTitle:true,titleTextStyle:TextStyle(color:Color(0xFFE8E8F0),fontSize:17,fontWeight:FontWeight.w700)),
-                ),
-                home:const HomePage(),
-              );
-            }
-          }
-          DARTEOF
-      
-      - run: |
-          cat > mini_phone/lib/home.dart << 'DARTEOF'    import 'package:flutter/material.dart';
+      await S.init();
+      AutoMsg.init();
+      runApp(const App());
+    }
+    
+    class App extends StatelessWidget {
+      const App({super.key});
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(
+          title:'小手机', debugShowCheckedModeBanner:false,
+          theme: ThemeData(
+            brightness:Brightness.dark,
+            scaffoldBackgroundColor:const Color(0xFF0A0A14),
+            colorScheme:const ColorScheme.dark(primary:Color(0xFFFF4470),secondary:Color(0xFFFF6B8A),surface:Color(0xFF12122A),onSurface:Color(0xFFE8E8F0)),
+            appBarTheme:const AppBarTheme(backgroundColor:Color(0xFF12122A),elevation:0,centerTitle:true,titleTextStyle:TextStyle(color:Color(0xFFE8E8F0),fontSize:17,fontWeight:FontWeight.w700)),
+          ),
+          home:const HomePage(),
+        );
+      }
+    }
+    DARTEOF
+
+- run: |
+    cat > mini_phone/lib/home.dart << 'DARTEOF'
+    import 'package:flutter/material.dart';
     import 'package:image_picker/image_picker.dart';
     import 'dart:convert';
     import 'chat_list.dart';
